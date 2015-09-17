@@ -1,0 +1,22 @@
+{
+  "name": "cheeky",
+  "version": "1.0.0",
+  "homepage": "https://github.com/carbonrobot/cheeky",
+  "authors": [
+    "Charlie Brown <carbonrobot@gmail.com>"
+  ],
+  "description": "Cheeky is an ultralight CMS",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.4.5",
+    "angular-animate": "~1.4.5",
+    "angular-mocks": "~1.4.5",
+    "angular-resource": "~1.4.5",
+    "angular-route": "~1.4.5",
+    "angular-sanitize": "~1.4.5",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.5",
+    "lodash": "~3.10.1",
+    "oclazyload": "~1.0.4"
+  }
+}
