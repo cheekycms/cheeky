@@ -3,8 +3,9 @@ var Hapi = require('hapi'),
 
 var internals = {
     debug: process.env.NODE_ENV === 'development',
-    staticContentPath: '../public',
-    db: 'mongodb://localhost/cap-dev'
+    db: 'mongodb://localhost/cap-dev',
+	port: 6551,
+	staticContentPath: '../public'
 };
 
 // logging
@@ -54,7 +55,7 @@ var ui = {
 // Build a hapi server
 var server = new Hapi.Server();
 server.connection({
-	port: 6551,
+	port: internals.port,
 	routes: {
 		files: {
 			relativeTo: Path.join(__dirname, internals.staticContentPath)
