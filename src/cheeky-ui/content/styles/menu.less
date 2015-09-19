@@ -1,0 +1,124 @@
+.mp-menu {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+}
+
+.mp-menu:before,
+.mp-menu:after {
+	display: table;
+	content: " ";
+}
+
+.mp-menu:after {
+	clear: both;
+}
+
+.mp-menu a {
+	text-decoration: none;
+	color: #f7f7f7;
+	outline: none;
+}
+
+.mp-menu a:hover, 
+.mp-menu a:focus {
+	color: #fff;
+	outline: none;
+}
+
+.mp-menu h2 {
+	margin: 0;
+    padding: 1em;
+    color: rgba(0,0,0,0.5);
+    text-shadow: 0 0 1px rgba(0,0,0,0.1);
+    font-weight: 300;
+    font-size: 2em;
+}
+
+.mp-menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.mp-menu ul li > a {
+    display: block;
+    padding: 0.7em 1em 0.7em 1.8em;
+    outline: none;
+    box-shadow: inset 0 -1px rgba(0,0,0,0.2);
+    text-shadow: 0 0 1px rgba(255,255,255,0.1);
+    font-size: 1.4em;
+}
+
+.mp-menu ul li > a:hover {
+    background: #294E75;
+    transition: background 0.25s ease-in-out;
+}
+
+.mp-level {
+    position: absolute;
+    width: 300px;
+    height: 100%;
+    background: #336ca6;
+    box-shadow: 1px 0 2px rgba(0,0,0,0.2);
+}
+
+.mp-level > ul > li:first-child > a {
+	box-shadow: inset 0 -1px rgba(0,0,0,0.2), inset 0 1px rgba(0,0,0,0.2);
+}
+
+.mp-level-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    height: 100%;
+    background: #294E75;
+    box-shadow: inset -1px 0 2px rgba(0,0,0,0.2);
+    color: rgba(0,0,0,0.4);
+    text-shadow: 0 0 1px rgba(0,0,0,0.1);
+}
+
+.mp-back {
+    background: rgba(0,0,0,0.1);
+    outline: none;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    display: block;
+    font-size: 0.8em;
+    padding: 1em;
+    position: relative;
+    box-shadow: inset 0 1px rgba(0,0,0,0.1);
+}
+
+.mp-back:hover {
+    background: #294E75;
+}
+
+.mp-category > i {
+    float: right;
+    padding-top: 4px;
+}
+
+.mp-select {
+    background: rgb(55, 118, 181);
+}
+.mp-select:hover {
+    background: #294E75;
+}
+
+.vertical-text {
+    margin-top: 30px;
+    transform: rotate(90deg);
+    white-space: nowrap;
+    color: rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+    font-weight: 300;
+}
+
+.vertical-text .fa {
+    margin-right: 10px;
+}

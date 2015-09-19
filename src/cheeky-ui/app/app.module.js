@@ -2,7 +2,8 @@
 
 angular.module('app', [
 	'ui.router',
-	'app.common'
+	'app.common',
+	'app.default'
 ]).config(config);
 
 /**

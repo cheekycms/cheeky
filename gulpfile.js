@@ -132,7 +132,7 @@ function styles() {
         }))
         .pipe(rename('styles.css'))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(config.build.output.content));
+        .pipe(gulp.dest(config.build.output.css));
 }
 
 function templates() {
