@@ -15,11 +15,13 @@
 </head>
 
 <body ng-app="app">
-    <div class="ng-cloak">
-        <div ng-controller="NavController as nav">
-            <mp-menu items="nav.items"></mp-menu>
+    <div class="ck-container ng-cloak">
+        <div class="ck-sidenav" ng-controller="NavController as nav">
+            <ck-menu items="nav.items"></mp-menu>
         </div>
-        {{{content}}}
+        <div class="ck-content">
+            {{{content}}}
+        </div>
     </div>
 
     <script src="public/js/vendor.min.js"></script>
