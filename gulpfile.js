@@ -38,6 +38,7 @@ gulp.task('build', function(done){
         done);
 });
 
+gulp.task('test', ['test:api']);
 gulp.task('test:api', function(){
     return gulp.src([
         'test/cheeky-api/**/*.spec.js'
