@@ -2,6 +2,9 @@
   "name": "cheeky",
   "version": "1.0.0",
   "description": "Cheeky is an ultralight CMS",
+  "engines": {
+    "node": "4.x.x"
+  },
   "main": "index.js",
   "scripts": {
     "test": "gulp test:api"
