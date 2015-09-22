@@ -3,3 +3,7 @@ node_js: node
 before_script:
   - npm install -g gulp
 script: gulp
+deploy:  
+  provider: azure_web_apps
+  verbose: true
+  skip_cleanup: true

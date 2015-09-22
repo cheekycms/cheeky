@@ -20,7 +20,7 @@ var gulp = require('gulp'),
     config = require('./gulpfile.config');
 
 // tasks
-gulp.task('default', ['serve']);
+gulp.task('default', ['build']);
 gulp.task('serve', function(done){
     runSequence(
         'bower',
