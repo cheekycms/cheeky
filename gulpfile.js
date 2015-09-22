@@ -34,6 +34,7 @@ gulp.task('serve', function(done){
 gulp.task('build', function(done){
     runSequence(
         'clean',
+        'bower',
         ['jsApp', 'jsVendor', 'styles', 'templates', 'images', 'content'], 
         done);
 });
