@@ -8,7 +8,7 @@ function NavController($http) {
 	(function init(){
 		
 		$http.get('content.json?lang=en_US').then(function(response){
-			vm.items = response.data.root;
+			vm.items = response.data.items;
 		});
 		
 	})();

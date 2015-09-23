@@ -7,8 +7,14 @@ function ckMenu(){
 		restrict: 'AE',
 		replace: true,
 		scope: {
-			root: '=items'
+			items: '=items'
 		},
-		templateUrl: 'common/directives/menu/ckMenu.directive.html'
+		templateUrl: 'common/directives/menu/ckMenu.directive.html',
+		link: function(scope, element, attrs){
+			scope.root = {
+				name: 'All Content',
+				items: scope.items
+			};
+		}
 	};
 }

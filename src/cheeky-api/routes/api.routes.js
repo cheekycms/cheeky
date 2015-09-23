@@ -4,26 +4,17 @@ var controller = require('../controllers/api.controller.js'),
 module.exports = [
 	{
 		method: 'POST',
-		path: '/category/add',
-		handler: controller.addCategory,
+		path: '/content/{path*}',
+		handler: controller.updateContent,
 		config: {
-			description: 'Adds a new category.',
-			validate: validations.addCategory
-		}
-	},
-	{
-		method: 'POST',
-		path: '/category/{path}/add',
-		handler: controller.addSubcategory,
-		config: {
-			description: 'Adds a child category to the specified category.',
-			validate: validations.addCategory
+			description: 'Updates the specified content in a path.',
+			validate: validations.updateContent
 		}
 	},
 	{
 		method: 'GET',
 		path: '/content.json',
-		handler: controller.getContent,
+		handler: controller.generateContent,
 		config: {
 			description: 'Returns the content json document with all category and item names.'
 		}
