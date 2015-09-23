@@ -85,6 +85,15 @@ function tree(schema, options) {
 		}
 		this.collection.remove({ path: { '$regex': '^' + this.path + pathSeparator } }, next);
 	});
+	
+	schema.static('getCollection', function (path, opt, cb) {
+		if(typeof(opt) === 'function'){
+			cb = opt;
+			opt = {};
+		}
+		var filter = path ? { path: { $regex: '^' + this.path + pathSeparator } } : {};
+		return this.find(filter, opt, cb);
+	});
 
 	schema.method('getChildren', function (recursive, opt, cb) {
 		if (typeof (recursive) === 'function') {

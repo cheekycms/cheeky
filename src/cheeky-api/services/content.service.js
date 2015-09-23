@@ -15,18 +15,8 @@ var mongoose = require('mongoose'),
  * @param {callback} next
  */
 function generateContent(path, next) {
-	Content.findOne({ key: 'root' }, function (err, content) {
-		if (err) return next(err); // jshint ignore:line
-
-		if (content) {
-			// get all children of this category and project
-			var include = { name: true, key: true, path: true };
-			return Content.getChildren(true, include, next);
-		}
-		else{
-			return next(null, null);
-		}
-	});
+	var include = { $$hashKey: false, _v: false };
+	return Content.getCollection(path, include, next);
 }
 
 /**
@@ -38,23 +28,9 @@ function generateContent(path, next) {
  * @param {callback} next
  */
 function updateContent(data, parentPath, next) {
-	Content.findOne({ path: parentPath }, function (err, content) {
+	Content.findOne({ path: parentPath }, function (err, parent) {
 		if (err) return next(err); // jshint ignore:line
-
-		if (content) {
-			return saveContent(data, parent, next);
-		}
-			
-		// if we don't the find the parent content, 
-		// we may need to create a root content element first
-		if (!content && parentPath === 'root') {
-			return saveContent({ name: 'root', key: 'root' }, null, function (err, parent) {
-				return saveContent(data, parent, next);
-			});
-		}
-		else {
-			return next('Could not find parent content.');
-		}
+		return saveContent(data, parent, next);
 	});
 }
 
@@ -68,7 +44,11 @@ function updateContent(data, parentPath, next) {
  */
 function saveContent(data, parent, next) {
 	var content = new Content(data);
-	content.parent = parent;
+
+	if(parent){
+		content.parent = parent;
+	}
+	
 	content.save(function (err) {
 		if (err) return next(err); // jshint ignore:line
 

@@ -7,6 +7,9 @@ var model = new Schema({
 	key: String,
 	isCategory: Boolean
 });
-model.plugin(tree);
+model.plugin(tree, {
+	pathSeparator: '-',
+	pathField: 'key'
+});
 
 mongoose.model('content', model);

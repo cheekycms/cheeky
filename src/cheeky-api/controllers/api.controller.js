@@ -5,7 +5,8 @@ var Boom = require('boom'),
  * Generate a content file for a given path
  */
 function generateContent(request, reply) {
-	service.generateContent('root', function(err, content){
+	var path = _parsePath(request);
+	service.generateContent(path, function(err, content){
 		var response = {
 			version: 0.1
 		};
@@ -26,14 +27,21 @@ function generateContent(request, reply) {
  * Update cms content
  */
 function updateContent(request, reply) {
-	var parentPath = request.params.path;
-	service.updateContent(request.payload, parentPath, function (err, content) {
+	var path = _parsePath(request);
+	service.updateContent(request.payload, path, function (err, content) {
 		if (err) {
-			return reply(Boom.badImplementation('Could not save the category.', err));
+			return reply(Boom.badImplementation('Could not save the content.', err));
 		}
 
 		return reply(content);
 	});
+}
+
+/**
+ * Parse the request and return the content path
+ */
+function _parsePath(request){
+	return request.params.path ? request.params.path.split('/').join('-') : '';
 }
 
 module.exports.updateContent = updateContent;

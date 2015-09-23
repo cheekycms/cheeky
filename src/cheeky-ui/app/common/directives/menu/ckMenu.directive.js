@@ -11,10 +11,12 @@ function ckMenu(){
 		},
 		templateUrl: 'common/directives/menu/ckMenu.directive.html',
 		link: function(scope, element, attrs){
-			scope.root = {
-				name: 'All Content',
-				items: scope.items
-			};
+			scope.$watch('items', function(){
+				scope.root = {
+					name: 'All Content',
+					items: scope.items
+				};	
+			});
 		}
 	};
 }

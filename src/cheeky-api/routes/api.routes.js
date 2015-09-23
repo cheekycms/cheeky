@@ -13,7 +13,7 @@ module.exports = [
 	},
 	{
 		method: 'GET',
-		path: '/content.json',
+		path: '/content/{path*}',
 		handler: controller.generateContent,
 		config: {
 			description: 'Returns the content json document with all category and item names.'
