@@ -2,60 +2,15 @@
 
 angular.module('app.common').controller('NavController', NavController);
 
-function NavController() {
+function NavController($http) {
 	var vm = this;
 
-	vm.items =
-	{
-		title: 'All Categories',
-		items: [
-			{
-				title: 'Devices',
-				items: [
-					{
-						title: 'Magazines',
-						items: [
-							{
-								title: 'Store'
-							},
-							{
-								title: 'Credits'
-							}
-						]
-					},
-					{
-						title: 'Store'
-					},
-					{
-						title: 'Credits'
-					}
-				]
-			},
-			{
-				title: 'Magazines',
-				items: [
-					{
-						title: 'Store',
-						items: [
-							{
-								title: 'Store'
-							},
-							{
-								title: 'Credits'
-							}
-						]
-					},
-					{
-						title: 'Credits'
-					}
-				]
-			},
-			{
-				title: 'Store'
-			},
-			{
-				title: 'Credits'
-			}
-		]
-	};
+	(function init(){
+		
+		$http.get('content.json?lang=en_US').then(function(response){
+			vm.items = response.data.root;
+		});
+		
+	})();
+	
 }
