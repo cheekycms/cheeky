@@ -30,7 +30,18 @@ function generateContent(path, next) {
 function updateContent(data, parentPath, next) {
 	Content.findOne({ path: parentPath }, function (err, parent) {
 		if (err) return next(err); // jshint ignore:line
-		return saveContent(data, parent, next);
+		
+		// look for duplicate keys
+		var filter = {key:data.key};
+		if(parent){
+			filter.path = { $regex: '^' + parentPath };
+		}
+		Content.findOne(filter, function(err, value){
+			if(err) return next(err);
+			if(value) return next('Duplicate key not allowed.');
+			
+			return saveContent(data, parent, next);	
+		});
 	});
 }
 
@@ -45,10 +56,10 @@ function updateContent(data, parentPath, next) {
 function saveContent(data, parent, next) {
 	var content = new Content(data);
 
-	if(parent){
+	if (parent) {
 		content.parent = parent;
 	}
-	
+
 	content.save(function (err) {
 		if (err) return next(err); // jshint ignore:line
 

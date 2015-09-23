@@ -34,17 +34,13 @@ function tree(schema, options) {
 				return next();
 			}
 			
-			console.log('[child]', this);
-			
 			this.collection.findOne({ pathField: this.parent[pathField] }, function (err, doc) {
 				if (err) {
 					return next(err);
 				}
 				
-				console.log('[parent]', doc);
 				var previousPath = self.path;
 				self.path = doc.path + pathSeparator + self[pathField].toString();
-				console.log('[self]', self);
 				console.log(isParentChange);
 				
 				if (isParentChange && previousPath) {
@@ -125,7 +121,10 @@ function tree(schema, options) {
 		return this.model(this.constructor.modelName).find(filter, cb);
 	};
 
-	schema.method('getAnsestors', getAncestors);
+	schema.method('getAncestors', getAncestors);
+	schema.static('getPathSeparator', function(){
+		return pathSeparator;
+	});
 
 	schema.virtual('level').get(function () {
 		return this.path ? this.path.split(pathSeparator).length : 0;
