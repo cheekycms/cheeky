@@ -23,7 +23,7 @@ function ckMenuLevel() {
 			}
 			
 			function navigate(fromElement, toElement) {
-				if(!toElement.items){
+				if(!toElement.isCategory){
 					// TODO: navigate to content editor
 					return;
 				}
