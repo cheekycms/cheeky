@@ -4,8 +4,7 @@ var mongoose = require('mongoose'),
 
 var model = new Schema({
 	name: String,
-	key: String,
-	isCategory: Boolean
+	key: String
 });
 model.plugin(tree, {
 	pathSeparator: '-',

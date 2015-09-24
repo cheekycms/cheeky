@@ -30,6 +30,7 @@ function updateContent(request, reply) {
 	var path = _parsePath(request);
 	service.updateContent(request.payload, path, function (err, content) {
 		if (err) {
+			console.log(err);
 			return reply(Boom.badImplementation('Could not save the content.', err));
 		}
 

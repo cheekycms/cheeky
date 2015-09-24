@@ -3,7 +3,7 @@
 	<a href="#" class="ck-menu-link-back" ng-click="back()" ng-show="parent"><i class="fa fa-angle-left"></i> back to {{parent.name}}</a>
 	<ul>
 		<li ng-repeat="child in item.items">
-			<a href="#" ng-class="{'ck-menu-link-category' : child.isCategory, 'ck-menu-link-select' : !child.isCategory}" ng-click="navigate(item, child)">{{child.name}} <i class="fa fa-angle-right" ng-show="child.isCategory"></i></a>
+			<a href="#" ng-class="{'ck-menu-link-category' : child.items, 'ck-menu-link-select' : !child.items}" ng-click="navigate(item, child)">{{child.name}} <i class="fa fa-angle-right" ng-show="child.items"></i></a>
 		</li>
 	</ul>
 </div>

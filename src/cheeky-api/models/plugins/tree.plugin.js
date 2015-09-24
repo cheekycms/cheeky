@@ -1,5 +1,6 @@
 // from: https://github.com/briankircho/mongoose-tree
-var Schema = require('mongoose').Schema;
+var Schema = require('mongoose').Schema,
+	mapper = require('./mapper.plugin.js');
 
 module.exports = exports = tree;
 
@@ -45,7 +46,8 @@ function tree(schema, options) {
 				
 				if (isParentChange && previousPath) {
 					// When the parent is changed we must rewrite all children paths as well
-					self.collection.find({ path: { '$regex': '^' + previousPath + pathSeparator } }, function (err, cursor) {
+					var ffilter = { path: { '$regex': '^' + previousPath + pathSeparator } };
+					self.collection.find(ffilter, function (err, cursor) {
 						if (err) {
 							return next(err);
 						}
@@ -53,7 +55,12 @@ function tree(schema, options) {
 						var stream = cursor.stream();
 						stream.on('data', function (doc) {
 							var newPath = self.path + doc.path.substr(previousPath.length);
-							self.collection.update({ pathField: doc[pathField] }, { $set: { path: newPath } }, function (err) {
+							self.collection.update({ 
+								pathField: doc[pathField] 
+							}, { 
+								$set: { path: newPath } 
+							}, function (err) {
+								
 								if (err) {
 									return next(err);
 								}
@@ -87,8 +94,13 @@ function tree(schema, options) {
 			cb = opt;
 			opt = {};
 		}
-		var filter = path ? { path: { $regex: '^' + this.path + pathSeparator } } : {};
-		return this.find(filter, opt, cb);
+		var filter = path ? { path: { $regex: '^' + path + pathSeparator } } : {};
+		return this.find(filter, opt, function(err, results){
+			if(err){
+				return cb(err);
+			}
+			return cb(null, mapper.unflatten(results, pathSeparator));
+		});
 	});
 
 	schema.method('getChildren', function (recursive, opt, cb) {
@@ -120,7 +132,7 @@ function tree(schema, options) {
 		var filter = { pathField: { $in: ids } };
 		return this.model(this.constructor.modelName).find(filter, cb);
 	};
-
+	
 	schema.method('getAncestors', getAncestors);
 	schema.static('getPathSeparator', function(){
 		return pathSeparator;
