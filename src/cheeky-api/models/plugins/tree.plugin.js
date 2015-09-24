@@ -95,7 +95,7 @@ function tree(schema, options) {
 			opt = {};
 		}
 		var filter = path ? { path: { $regex: '^' + path + pathSeparator } } : {};
-		return this.find(filter, opt, function(err, results){
+		return this.find(filter, opt).lean().exec(function(err, results){
 			if(err){
 				return cb(err);
 			}

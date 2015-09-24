@@ -14,7 +14,7 @@ function unflatten(input, delim) {
 
 	input.forEach(function (item) { 
 		// map the path
-		mapper[item.path] = item.toObject();
+		mapper[item.path] = item;
    
 		// if the element has parent(s)
 		if (item.path.indexOf(delim) !== -1) {
