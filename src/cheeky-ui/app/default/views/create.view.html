@@ -1,0 +1,34 @@
+<div class="ck-content" ng-controller="CreateContentController as ctrl">
+    <div class="ck-content-section">
+        <div class="col-lg-6">
+            <h1>Add Content</h1>
+            <form class="form" name="ctrl.createForm" novalidate>
+                
+                <div class="form-group" ck-validation-msgs="{required: 'Name is required.'}">
+                    <label class="control-label">Name</label>
+                    <input type="text" class="form-control" name="name" ng-model="ctrl.content.name" required />
+                </div>
+                
+                <div class="form-group">
+                    <label class="control-label">Description</label>
+                    <textarea class="form-control" rows="3" name="description" ng-model="ctrl.content.description" />
+                </div>
+                
+                <div class="form-group" ck-validation-msgs="{required: 'Key is required.'}">
+                    <label class="control-label">CMS Key</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="key" ng-model="ctrl.content.key" ng-disabled="!ctrl.customKey" ng-required="ctrl.customKey" />
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="ctrl.customKey=true" ng-if="!ctrl.customKey">custom</a>
+                            <button type="button" class="btn btn-default" ng-click="ctrl.customKey=false" ng-if="ctrl.customKey">auto</a>
+                        </div>
+                    </div>
+                    <p class="help-block">This is auto-generated. Typically, you don't need to change this.</p>
+                </div>
+                
+                <button type="button" class="btn btn-default" ng-click="ctrl.rts()">Cancel</button>
+                <button type="button" class="btn btn-primary" ng-click="ctrl.create()" ck-validate-on-click>Create</button>
+            </form>
+        </div>
+    </div>
+</div>

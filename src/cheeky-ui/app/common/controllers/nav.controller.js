@@ -9,7 +9,6 @@ function NavController($http) {
 		
 		$http.get('content?lang=en_US').then(function(response){
 			vm.items = response.data.items;
-			console.log(response);
 		});
 		
 	})();

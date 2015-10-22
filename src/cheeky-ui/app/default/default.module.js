@@ -10,5 +10,9 @@ function config($stateProvider) {
         .state('default', {
         	url: '/',
             templateUrl: 'default/views/default.view.html'
-        });
+        })
+		.state('create', {
+			url: '/create',
+			templateUrl: 'default/views/create.view.html'
+		});
 }

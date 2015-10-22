@@ -1,9 +1,12 @@
 <div class="ck-menu-level">
-	<h2>{{item.name}}</h2>
+	<h2><a ui-sref="item.link" class="ck-menu-link-title">{{item.name}}</a></h2>
 	<a href="#" class="ck-menu-link-back" ng-click="back()" ng-show="parent"><i class="fa fa-angle-left"></i> back to {{parent.name}}</a>
 	<ul>
+		<li>
+			<a ui-sref="create" ng-class="ck-menu-link-action"><i class="fa fa-plus"></i> Add Content</a>
+		</li>
 		<li ng-repeat="child in item.items">
-			<a href="#" ng-class="{'ck-menu-link-category' : child.items, 'ck-menu-link-select' : !child.items}" ng-click="navigate(item, child)">{{child.name}} <i class="fa fa-angle-right" ng-show="child.items"></i></a>
+			<a ui-sref="child.link" ng-class="{'ck-menu-link-category' : child.items, 'ck-menu-link-select' : !child.items}" ng-click="navigate(item, child)">{{child.name}} <i class="fa fa-angle-right" ng-show="child.items"></i></a>
 		</li>
 	</ul>
 </div>

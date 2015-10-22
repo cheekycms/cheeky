@@ -1,19 +1,22 @@
+@menu-bg-color: @cheeky-primary;
 @link-color: #f7f7f7;
 @text-color: rgba(0,0,0,0.5);
-@link-bg-color: #336ca6;
+@link-bg-color: @cheeky-primary;
 @link-bg-color-hover: darken(@link-bg-color, 20%);
 @select-bg-color: lighten(@link-bg-color, 10%);
 
 .ck-menu {
     height: 100%;
     background: @link-bg-color;
+    font-weight: 300;
 }
 
 .ck-menu a {
 	text-decoration: none;
 	color: @link-color;
-    background: @link-bg-color;
+    background: @menu-bg-color;
 	outline: none;
+    cursor: pointer;
 }
 
 .ck-menu a:hover, 
@@ -63,6 +66,11 @@
 
 a.ck-menu-link-select {
     background: @select-bg-color;
+}
+
+a.ck-menu-link-title:hover {
+    background: @link-bg-color;
+    text-decoration: underline;
 }
 
 a.ck-menu-link-back {

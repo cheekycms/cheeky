@@ -24,8 +24,7 @@ gulp.task('default', ['build']);
 gulp.task('serve', function(done){
     runSequence(
         'bower',
-        'clean',
-        ['jsApp', 'jsVendor', 'styles', 'templates', 'images', 'content'], 
+        'build', 
         'watch',
         'run',
         done);
@@ -66,12 +65,12 @@ gulp.task('styles', ['fonts'], styles);
 gulp.task('templates', templates);
 gulp.task('watch', watch);
 
-function downloadBower(done){
+function downloadBower(){
     return bower();
 }
 
-function clean(done){
-    del(['public/*'], done);
+function clean(){
+    return del(['public/*']);
 }
 
 function content() {
@@ -91,9 +90,9 @@ function images() {
 
 function jsApp() {
     return gulp.src(config.src.js.app)
+        .pipe(sourcemaps.init())
         .pipe(ngannotate())
         .pipe(wrap('(function(angular){\n<%= contents %>\n})(window.angular);'))
-        .pipe(sourcemaps.init())
         .pipe(concat('application.min.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write())

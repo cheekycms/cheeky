@@ -16,10 +16,8 @@
 
 <body ng-app="app">
     <div class="ck-container ng-cloak">
-        <div class="ck-sidenav" ng-controller="NavController as nav">
-            <ck-menu items="nav.items"></mp-menu>
-        </div>
-        <div class="ck-content">
+        {{>nav}}
+        <div class="ck-stage">
             {{{content}}}
         </div>
     </div>
