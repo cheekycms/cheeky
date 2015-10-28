@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('app', [
-	'app.default'
+	'app.default',
+	'app.developer'
 ]).config(config);
 
 /**
