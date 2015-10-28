@@ -1,0 +1,44 @@
+editable {
+	position: relative;
+}
+
+editable > span:hover {
+	background: lightgreen;
+	cursor: pointer; 
+}
+
+editable.ng-dirty > span {
+	background: palevioletred;
+}
+
+.tools {
+	position: absolute;
+	width: 220px;
+	bottom: -40px;
+	z-index: 99;
+	padding: 7px;
+	background: lightgray;
+	border-radius: 3px;
+}
+
+.btn {
+	width: 70px;
+	padding: 2px 4px;
+    border: 0 none;
+    text-transform: uppercase;
+	background: #0099cc;
+    color: #ffffff;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+ 
+.btn:hover, .btn:focus, .btn:active, .btn.active {
+    background: #33a6cc;
+}
+ 
+.btn:active, .btn.active {
+    background: #007299;
+    box-shadow: none;
+}
