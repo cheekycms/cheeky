@@ -2,13 +2,32 @@ var mongoose = require('mongoose'),
 	Content = mongoose.model('content');
 
 /**
+ * Gets the content for a specified path
+ * @param {string} path - The content path
+ * @param {callback} next
+ */
+function getContent(path, next){
+	return Content.findOne({ path: path }, function (err, content) {
+		if (err) {
+			return next(err);
+		}
+		
+		return next(null, content);
+	});
+}
+
+/**
  * Generates a combined content object for the given path 
  * @param {string} path - The content path
  * @param {callback} next
  */
-function generateContent(path, next) {
-	var include = { $$hashKey: false, _v: false };
-	Content.getCollection(path, include, next);
+function generateContent(path, map, next) {
+	var propertyMap = { $$hashKey: false, __v: false };
+	if(map){
+		propertyMap.description = false;
+		propertyMap.value = false;
+	}
+	Content.getCollection(path, propertyMap, next);
 }
 
 /**
@@ -52,13 +71,18 @@ function create(data, parentPath, next) {
  */
 function saveContent(data, parent, next) {
 	var content = new Content(data);
-
 	if (parent) {
 		content.parent = parent;
 	}
 	content.save(function (err) {
 		if (err) {
 			return next(err);
+		}
+		// ********************************************
+		// make sure we have an items[] property if this is a category
+		// ********************************************
+		if(content.isCategory){
+			content.items = [];
 		}
 		return next(null, content);
 	});
@@ -89,5 +113,6 @@ function updateContent(data, parentPath, next) {
 	}
 }
 
+module.exports.getContent = getContent;
 module.exports.generateContent = generateContent;
 module.exports.updateContent = updateContent;

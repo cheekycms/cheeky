@@ -1,18 +1,30 @@
 'use strict';
 
-angular.module('app.default', ['app.common']).config(config);
+angular.module('app.default', ['ngMessages', 'ui.router']).config(config);
 
 /**
  * Configures the default module routing
  */
-function config($stateProvider) {
+function config($urlRouterProvider, $stateProvider) {
+	
+	// Start at the default route
+    $urlRouterProvider.otherwise('/view/category/');
+	
     $stateProvider
-        .state('default', {
-        	url: '/',
-            templateUrl: 'default/views/default.view.html'
-        })
-		.state('create', {
-			url: '/create',
-			templateUrl: 'default/views/create.view.html'
+        .state('create-category', {
+			url: '/create/category/{path:.*}',
+			templateUrl: 'default/views/create-category.view.html'
+		})
+		.state('create-content', {
+			url: '/create/content/{path:.*}',
+			templateUrl: 'default/views/create-content.view.html'
+		})
+		.state('category', {
+			url: '/view/category/{path:.*}',
+			templateUrl: 'default/views/category.view.html'
+		})
+		.state('content', {
+			url: '/view/content/{path:.*}',
+			templateUrl: 'default/views/content.view.html'
 		});
 }

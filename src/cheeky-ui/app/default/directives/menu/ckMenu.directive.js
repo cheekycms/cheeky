@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.common').directive('ckMenu', ckMenu);
+angular.module('app.default').directive('ckMenu', ckMenu);
 
 function ckMenu(){
 	return {
@@ -9,12 +9,13 @@ function ckMenu(){
 		scope: {
 			items: '=items'
 		},
-		templateUrl: 'common/directives/menu/ckMenu.directive.html',
+		templateUrl: 'default/directives/menu/ckMenu.directive.html',
 		link: function(scope, element, attrs){
 			scope.$watch('items', function(){
 				scope.root = {
 					name: 'All Content',
-					items: scope.items
+					items: scope.items,
+					isCategory: true
 				};	
 			});
 		}

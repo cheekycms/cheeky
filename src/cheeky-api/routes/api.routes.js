@@ -3,6 +3,14 @@ var controller = require('../controllers/api.controller.js'),
 
 module.exports = [
 	{
+		method: 'GET',
+		path: '/content/{path*}',
+		handler: controller.getContent,
+		config: {
+			description: 'Gets the content from the store'
+		}
+	},
+	{
 		method: 'POST',
 		path: '/content/{path*}',
 		handler: controller.updateContent,
@@ -13,10 +21,18 @@ module.exports = [
 	},
 	{
 		method: 'GET',
-		path: '/content/{path*}',
+		path: '/content.json',
 		handler: controller.generateContent,
 		config: {
 			description: 'Returns the content json document with all category and item names.'
 		}
-	}
+	},
+	{
+		method: 'GET',
+		path: '/map/{path*}',
+		handler: controller.generateMap,
+		config: {
+			description: 'Returns the content map json document with all category and item names.'
+		}
+	},
 ];

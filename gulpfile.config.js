@@ -31,6 +31,7 @@ module.exports = {
                 'bower_components/angular-resource/angular-resource.js',
                 'bower_components/angular-animate/angular-animate.js',
                 'bower_components/angular-sanitize/angular-sanitize.js',
+                'bower_components/angular-messages/angular-messages.js',
                 'bower_components/angular-ui-router/release/angular-ui-router.js',
                 'bower_components/bootstrap/dist/js/bootstrap.js',
                 'bower_components/lodash/lodash.js'
@@ -48,7 +49,7 @@ module.exports = {
             'src/cheeky-ui/app/**/*.view.html',
             'src/cheeky-ui/app/**/*.directive.html'   
         ],
-        templateModuleName: 'app.common'
+        templateModuleName: 'app.default'
     },
 
     // build paths

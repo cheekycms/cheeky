@@ -3,8 +3,11 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 var model = new Schema({
+	isCategory: Boolean,
 	name: String,
-	key: String
+	key: String,
+	description: String,
+	value: String
 });
 model.plugin(tree, {
 	pathSeparator: '-',

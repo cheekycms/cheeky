@@ -1,19 +1,14 @@
 'use strict';
 
-angular.module('app.default').controller('CreateContentController', CreateContentController);
+angular.module('app.default').controller('CreateCategoryController', CreateCategoryController);
 
-function CreateContentController($rootScope, $scope, navigator, contentService, utils){
+function CreateCategoryController($rootScope, $scope, navigator, contentService, utils){
 	var vm = this;
 	
 	// props
-	vm.parentKey = navigator.getPath();
+	vm.parentPath = navigator.getPath();
 	vm.customKey = false;
-	vm.content = {
-		name: '',
-		description: '',
-		key: ''	,
-		isCategory: false
-	};
+	vm.content = { name: '', key: '', isCategory: true };
 	
 	// methods
 	vm.create = create;
@@ -31,10 +26,10 @@ function CreateContentController($rootScope, $scope, navigator, contentService, 
 	 * Persists the new content to the cms
 	 */
 	function create(){
-		contentService.update(vm.parentKey, vm.content)
+		contentService.update(vm.parentPath, vm.content)
 			.then(function(data){
 				$rootScope.$broadcast('content-created', data);
-				navigator.viewContent(data.path);
+				navigator.viewCategory(data.path);
 			}, function(response){
 				console.log('response', response);
 			});

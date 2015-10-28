@@ -6,7 +6,7 @@ module.exports = exports = tree;
 
 function tree(schema, options) {
 	var pathSeparator = options && options.pathSeparator || '#';
-	var pathField = options && options.pathField || '_id';
+	var pathField = options && options.pathField || '__id';
 
 	schema.add({
 		parent: {
@@ -35,14 +35,13 @@ function tree(schema, options) {
 				return next();
 			}
 			
-			this.collection.findOne({ pathField: this.parent[pathField] }, function (err, doc) {
+			this.collection.findOne({ _id: this.parent }, function (err, doc) {
 				if (err) {
 					return next(err);
 				}
 				
 				var previousPath = self.path;
 				self.path = doc.path + pathSeparator + self[pathField].toString();
-				console.log(isParentChange);
 				
 				if (isParentChange && previousPath) {
 					// When the parent is changed we must rewrite all children paths as well

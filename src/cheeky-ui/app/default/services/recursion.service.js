@@ -1,4 +1,4 @@
-angular.module('app.common').factory('recursion', ['$compile', function($compile){
+angular.module('app.default').factory('recursion', ['$compile', function($compile){
     return {
         /**
          * Manually compiles the element, fixing the recursion loop.
