@@ -7,8 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "gulp test:api"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
