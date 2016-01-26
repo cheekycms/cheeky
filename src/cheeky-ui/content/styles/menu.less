@@ -1,19 +1,19 @@
 @menu-bg-color: @cheeky-primary;
-@link-color: #f7f7f7;
-@text-color: rgba(0,0,0,0.5);
-@link-bg-color: @cheeky-primary;
-@link-bg-color-hover: darken(@link-bg-color, 20%);
-@select-bg-color: lighten(@link-bg-color, 10%);
+@menu-link-color: #f7f7f7;
+@menu-text-color: rgba(0,0,0,0.5);
+@menu-link-bg-color: @cheeky-primary;
+@menu-link-bg-color-hover: darken(@menu-link-bg-color, 20%);
+@menu-select-bg-color: lighten(@menu-link-bg-color, 10%);
 
 .ck-menu {
     height: 100%;
-    background: @link-bg-color;
+    background: @menu-link-bg-color;
     font-weight: 300;
 }
 
 .ck-menu a {
 	text-decoration: none;
-	color: @link-color;
+	color: @menu-link-color;
     background: @menu-bg-color;
 	outline: none;
     cursor: pointer;
@@ -21,15 +21,15 @@
 
 .ck-menu a:hover, 
 .ck-menu a:focus {
-    color: @link-color;
-	background: @link-bg-color-hover;
+    color: @menu-link-color;
+	background: @menu-link-bg-color-hover;
     transition: background 0.25s ease-in-out;
 }
 
 .ck-menu h2 {
 	margin: 0;
     padding: 1em;
-    color: @text-color;
+    color: @menu-text-color;
     text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
     font-weight: 300;
     font-size: 2em;
@@ -65,11 +65,11 @@
 }
 
 a.ck-menu-link-select {
-    background: @select-bg-color;
+    background: @menu-select-bg-color;
 }
 
 a.ck-menu-link-title:hover {
-    background: @link-bg-color;
+    background: @menu-link-bg-color;
     text-decoration: underline;
 }
 

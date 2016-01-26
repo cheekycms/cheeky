@@ -11,6 +11,17 @@ exports.register = function(server, options, next){
 			}
 		}
 	});
+    
+    // register route to serve index file
+	server.route({
+		method: 'GET',
+		path: '/demo/{path*}',
+		handler: function (request, reply) {
+			return reply.view('views/demo', {}, {
+                layout: 'demo'
+            });
+		}
+	});
 
 	// register route to serve index file
 	server.route({

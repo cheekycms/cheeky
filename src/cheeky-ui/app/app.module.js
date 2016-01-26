@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app', ['app.default', 'app.developer']).config(config);
+angular.module('app', ['app.default']).config(config);
 
 /**
  * Configures the angular application

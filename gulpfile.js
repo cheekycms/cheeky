@@ -22,7 +22,7 @@ gulp.task('serve', function(done){
 });
 
 gulp.task('build', function(done){
-    runSequence('clean', ['jsApp', 'jsVendor', 'styles', 'templates', 'images', 'content'], done);
+    runSequence('clean', ['jsApp', 'jsVendor', 'jsCheeky', 'styles', 'templates', 'images', 'content'], done);
 });
 
 // components
@@ -32,6 +32,7 @@ gulp.task('fonts', fonts);
 gulp.task('images', images);
 gulp.task('jsApp', jsApp);
 gulp.task('jsVendor', jsVendor);
+gulp.task('jsCheeky', jsCheeky);
 gulp.task('run', run);
 gulp.task('styles', ['fonts'], styles);
 gulp.task('templates', templates);
@@ -57,6 +58,17 @@ function images() {
 }
 
 function jsApp() {
+    return gulp.src(config.src.js.cheekyjs)
+        .pipe(sourcemaps.init())
+        .pipe(ngannotate())
+        .pipe(wrap('(function(angular){\n<%= contents %>\n})(window.angular);'))
+        .pipe(concat('cheeky.min.js'))
+        .pipe(uglify())
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(config.build.output.js));
+}
+
+function jsCheeky() {
     return gulp.src(config.src.js.app)
         .pipe(sourcemaps.init())
         .pipe(ngannotate())
