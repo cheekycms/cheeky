@@ -7,14 +7,10 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     sourcemaps = require('gulp-sourcemaps'),
     templateCache = require('gulp-angular-templatecache'),
-    bower = require('gulp-bower'),
     wrap = require('gulp-wrap'),
     ngannotate = require('gulp-ng-annotate'),
     less = require('gulp-less'),
-    jshint = require('gulp-jshint'),
-    jasmine = require('gulp-jasmine'),
     runSequence = require('run-sequence'),
-    KarmaServer = require('karma').Server,
     rename = require('gulp-rename'),
     path = require('path'),
     config = require('./gulpfile.config');
@@ -22,44 +18,24 @@ var gulp = require('gulp'),
 // tasks
 gulp.task('default', ['build']);
 gulp.task('serve', function(done){
-    runSequence('bower', 'build', 'watch', 'run', done);
+    runSequence('build', 'watch', 'run', done);
 });
 
 gulp.task('build', function(done){
     runSequence('clean', ['jsApp', 'jsVendor', 'styles', 'templates', 'images', 'content'], done);
 });
 
-gulp.task('test', ['test:api']);
-gulp.task('test:api', function(){
-    return gulp.src([
-        'test/cheeky-api/**/*.spec.js'
-    ])
-    .pipe(jasmine());
-});
-
-gulp.task('test:ui', function(done){
-    new KarmaServer({
-        configFile: __dirname + '/test/cheeky-ui/karma.conf.js',
-    }, done).start();
-});
-
 // components
-gulp.task('bower', downloadBower);
 gulp.task('clean', clean);
 gulp.task('content', content);
 gulp.task('fonts', fonts);
 gulp.task('images', images);
-gulp.task('jsApp', ['lint'], jsApp);
+gulp.task('jsApp', jsApp);
 gulp.task('jsVendor', jsVendor);
-gulp.task('lint', jsLint);
 gulp.task('run', run);
 gulp.task('styles', ['fonts'], styles);
 gulp.task('templates', templates);
 gulp.task('watch', watch);
-
-function downloadBower(){
-    return bower();
-}
 
 function clean(){
     return del(['public/*']);
@@ -89,12 +65,6 @@ function jsApp() {
         .pipe(uglify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(config.build.output.js));
-}
-
-function jsLint(){
-    return gulp.src('src/**/*.js')
-        .pipe(jshint())
-        .pipe(jshint.reporter('jshint-stylish'));
 }
 
 function jsVendor() {
@@ -135,7 +105,6 @@ function templates() {
 
 function watch(){
     gulp.watch('src/**/*.less', ['styles']);
-    gulp.watch('src/**/*.js', ['lint']);
     gulp.watch(config.src.js.app, ['jsApp']);
     gulp.watch('src/**/*.html', ['templates', 'content']);
 }

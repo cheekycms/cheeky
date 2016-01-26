@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.developer', ['app.default']).config(config);
+angular.module('app.developer', []).config(config);
 
 /**
  * Configures the developer module routing
