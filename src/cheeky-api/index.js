@@ -1,6 +1,7 @@
 var glob = require('glob'),
     path = require('path'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    config = require('../config.js');
 
 exports.register = function (server, options, next) {
 		
@@ -22,7 +23,7 @@ exports.register = function (server, options, next) {
             }
 
             // connect to mongodb
-            db = mongoose.connect('mongodb://localhost/cheeky-cms').connection;
+            db = mongoose.connect(config.db).connection;
             db.on('error', console.error.bind(console, '[mongodb] [error] '));
             db.on('disconnected', function () {
                 console.log('[mongodb] disconnected');

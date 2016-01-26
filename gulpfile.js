@@ -22,19 +22,11 @@ var gulp = require('gulp'),
 // tasks
 gulp.task('default', ['build']);
 gulp.task('serve', function(done){
-    runSequence(
-        'bower',
-        'build', 
-        'watch',
-        'run',
-        done);
+    runSequence('bower', 'build', 'watch', 'run', done);
 });
 
 gulp.task('build', function(done){
-    runSequence(
-        'clean',
-        ['jsApp', 'jsVendor', 'styles', 'templates', 'images', 'content'], 
-        done);
+    runSequence('clean', ['jsApp', 'jsVendor', 'styles', 'templates', 'images', 'content'], done);
 });
 
 gulp.task('test', ['test:api']);

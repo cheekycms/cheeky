@@ -1,12 +1,6 @@
 var Hapi = require('hapi'),
-	Path = require('path');
-
-var internals = {
-    debug: process.env.NODE_ENV === 'development',
-    db: 'mongodb://localhost/cap-dev',
-	port: 6551,
-	staticContentPath: '../public'
-};
+	Path = require('path'),
+    config = require('./config.js');
 
 // logging
 var good = {
@@ -37,10 +31,10 @@ var visionary = {
 			html: 'handlebars'
 		},
 		layout: 'default',
-		path: Path.join(__dirname, internals.staticContentPath),
-		partialsPath: Path.join(__dirname, internals.staticContentPath, 'views/partials'),
-		layoutPath: Path.join(__dirname, internals.staticContentPath, 'views/layouts'),
-		isCached: !internals.debug
+		path: Path.join(__dirname, config.staticContentPath),
+		partialsPath: Path.join(__dirname, config.staticContentPath, 'views/partials'),
+		layoutPath: Path.join(__dirname, config.staticContentPath, 'views/layouts'),
+		isCached: !config.debug
 	}
 };
 
@@ -55,10 +49,10 @@ var ui = {
 // Build a hapi server
 var server = new Hapi.Server();
 server.connection({
-	port: internals.port,
+	port: config.port,
 	routes: {
 		files: {
-			relativeTo: Path.join(__dirname, internals.staticContentPath)
+			relativeTo: Path.join(__dirname, config.staticContentPath)
 		}
 	}
 });
