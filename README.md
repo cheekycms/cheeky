@@ -1,7 +1,7 @@
 Cheeky
 -----------------
 
-[![Build Status](https://travis-ci.org/carbonrobot/cheeky.svg?branch=master)](https://travis-ci.org/carbonrobot/cheeky)
+[![Build Status](https://travis-ci.org/cheekycms/cheeky.svg?branch=master)](https://travis-ci.org/cheekycms/cheeky)
 
 Cheeky is an ultralight CMS running over Mongodb. https://mongolab.com/databases/cheeky-cms
 
