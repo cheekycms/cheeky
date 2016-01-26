@@ -16,6 +16,7 @@
     "bootstrap": "~3.3.6",
     "lodash": "~4.0.1",
     "oclazyload": "~1.0.9",
-    "angular-messages": "~1.4.9"
+    "angular-messages": "~1.4.9",
+    "angular-cache": "~4.5.0"
   }
 }

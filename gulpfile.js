@@ -118,5 +118,6 @@ function templates() {
 function watch(){
     gulp.watch('src/**/*.less', ['styles']);
     gulp.watch(config.src.js.app, ['jsApp']);
+    gulp.watch(config.src.js.cheekyjs, ['cheekyjs']);
     gulp.watch('src/**/*.html', ['templates', 'content']);
 }

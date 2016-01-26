@@ -1,0 +1,93 @@
+body.cms-active {
+    padding-top: 40px;
+}
+
+#cms-ribbon {
+    font-size: 1rem;
+    min-height: auto;
+    background-color: rgba(0,0,0,0.75);
+    .navbar-header {
+        margin-right: 8px;
+        padding: 4px 0;
+    }
+    .navbar-brand {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        line-height: 1;
+        height: 40px;
+        width: 40px;
+        padding: 4px;
+        border: 1px solid black;
+        float: none;
+        font-weight: bold;
+        background-color: rgba(0,0,0,0.5);
+        border-radius: 4px 0;
+        .cheeky {
+            font-size: .65em;
+            font-weight: normal;
+            font-style: italic;
+        }
+    }
+    .navbar-form {
+        margin: 10px 8px;
+    }
+    .navbar-btn {
+        margin: 0;
+    }
+    select {
+        height: auto;
+        padding: 4px 13px;
+    }
+}
+
+.cms-button-bold,
+.cms-button-italics,
+.cms-button-underline {
+    font-family: Georgia, Times, "Times New Roman", serif;
+}
+.cms-button-bold {
+    font-weight: bold;
+}
+.cms-button-italics {
+    font-style: italic;
+}
+.cms-button-underline,
+.cms-button-underline:hover{
+    text-decoration: underline;
+}
+
+.cms-editable {
+    outline: 1px dashed #1370AB;
+    position: relative;
+    &.cms-edit-active {
+        background-color: rgba(255,255,0,0.5);
+        &::before {
+            position: absolute;
+            top: 0;
+            right: 0;
+            content: "Edit: Active";
+            background-color: yellow;
+            padding: 4px;
+            color: black;
+            font-weight: bold;
+            border-radius: 0 0 0 4px;
+        }
+    }
+    &:hover:not(.cms-edit-active) {
+        background-color: rgba(19,112,171,0.5);
+        outline: 2px dashed #1370AB;
+        cursor: pointer;
+        &::before {
+            position: absolute;
+            top: 0;
+            right: 0;
+            content: "Click to edit";
+            background-color: #1370AB;
+            padding: 4px;
+            color: white;
+            font-weight: bold;
+            border-radius: 0 0 0 4px;
+        }
+    }
+}
