@@ -22,7 +22,7 @@ gulp.task('serve', function(done){
 });
 
 gulp.task('build', function(done){
-    runSequence('clean', ['jsApp', 'jsVendor', 'jsCheeky', 'styles', 'templates', 'images', 'content'], done);
+    runSequence('clean', ['jsApp', 'jsVendor', 'jsCheeky', 'jsCheekyEditor', 'styles', 'templates', 'images', 'content'], done);
 });
 
 // components
@@ -33,6 +33,7 @@ gulp.task('images', images);
 gulp.task('jsApp', jsApp);
 gulp.task('jsVendor', jsVendor);
 gulp.task('jsCheeky', jsCheeky);
+gulp.task('jsCheekyEditor', jsCheekyEditor);
 gulp.task('run', run);
 gulp.task('styles', ['fonts'], styles);
 gulp.task('templates', templates);
@@ -79,6 +80,18 @@ function jsCheeky() {
         .pipe(gulp.dest(config.build.output.js));
 }
 
+function jsCheekyEditor() {
+    // TODO: source template? should be separate file so it can be overridden
+    return gulp.src(config.src.js.cheekyeditorjs)
+        .pipe(sourcemaps.init())
+        .pipe(ngannotate())
+        .pipe(wrap('(function(angular){\n<%= contents %>\n})(window.angular);'))
+        .pipe(concat('cheeky-editor.min.js'))
+        .pipe(uglify())
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(config.build.output.js));
+}
+
 function jsVendor() {
     return gulp.src(config.src.js.vendor)
         .pipe(concat('vendor.min.js'))
@@ -119,5 +132,6 @@ function watch(){
     gulp.watch('src/**/*.less', ['styles']);
     gulp.watch(config.src.js.app, ['jsApp']);
     gulp.watch(config.src.js.cheekyjs, ['jsCheeky']);
+    gulp.watch(config.src.js.cheekyeditorjs, ['jsCheekyEditor']);
     gulp.watch('src/**/*.html', ['templates', 'content']);
 }

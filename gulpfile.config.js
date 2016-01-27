@@ -45,9 +45,14 @@ module.exports = {
             ],
             
             cheekyjs: [
-                'src/cheeky-js/**/*.module.js',
+                'src/cheeky-js/module.js',
                 'src/cheeky-js/**/*.js'
             ],
+            
+            cheekyeditorjs: [
+                'src/cheeky-editor/module.js',
+                'src/cheeky-editor/**/*.js'
+            ]
         },
 
         // angular templates
