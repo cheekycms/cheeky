@@ -58,22 +58,22 @@ function images() {
 }
 
 function jsApp() {
-    return gulp.src(config.src.js.cheekyjs)
+    return gulp.src(config.src.js.app)
         .pipe(sourcemaps.init())
         .pipe(ngannotate())
         .pipe(wrap('(function(angular){\n<%= contents %>\n})(window.angular);'))
-        .pipe(concat('cheeky.min.js'))
+        .pipe(concat('application.min.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(config.build.output.js));
 }
 
 function jsCheeky() {
-    return gulp.src(config.src.js.app)
+    return gulp.src(config.src.js.cheekyjs)
         .pipe(sourcemaps.init())
         .pipe(ngannotate())
         .pipe(wrap('(function(angular){\n<%= contents %>\n})(window.angular);'))
-        .pipe(concat('application.min.js'))
+        .pipe(concat('cheeky.min.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(config.build.output.js));
@@ -118,6 +118,6 @@ function templates() {
 function watch(){
     gulp.watch('src/**/*.less', ['styles']);
     gulp.watch(config.src.js.app, ['jsApp']);
-    gulp.watch(config.src.js.cheekyjs, ['cheekyjs']);
+    gulp.watch(config.src.js.cheekyjs, ['jsCheeky']);
     gulp.watch('src/**/*.html', ['templates', 'content']);
 }

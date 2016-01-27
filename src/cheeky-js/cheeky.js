@@ -7,9 +7,10 @@ var domReady = function (callback) {
 
 domReady(function () {
     // inject ribbon
-    var ribbon = document.getElementById('template/cms-ribbon');
-    var body = document.getElementsByTagName('body')[0];
-    body.innerHTML = ribbon.innerHTML + body.innerHTML;
+    var template = document.getElementById('template/cms-ribbon');
+    var ribbon = template.innerHTML;
+    document.body.insertAdjacentHTML('afterbegin', ribbon);
+    document.body.classList.add('cms-active');
 });
 
 /**
@@ -49,18 +50,20 @@ angular.module('cheeky', ['angular-cache'])
     .directive('cheekyEditable', ['cheekyCMS',
         function (content) {
             return {
+                restrict: 'A',
                 link: function (scope, element, attrs) {
-                    if (!aloha) return; // if aloha does not exist, editing is disabled
+                    if (!window.aloha) return; // if aloha does not exist, editing is disabled
                         
                     var path = attrs.path || attrs.cheekyContent;
                         
-                    // activate editing
-                    aloha(angular.element(element)[0]);
-                        
-                    // on click, show the editing bar
-                    // TODO~~
-                        
-                                            
+                    var $element = angular.element(element);
+                    $element.addClass('cms-editable');
+                    
+                    $element.on('click', function(e){
+                        window.aloha($element[0]);    
+                        $element.addClass('cms-edit-active');
+                    });
+                    
                 }
             };
         }
