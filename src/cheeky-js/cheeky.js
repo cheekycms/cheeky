@@ -10,11 +10,20 @@ domReady(function () {
     var template = document.getElementById('template/cms-ribbon');
     var ribbon = template.innerHTML;
     document.body.insertAdjacentHTML('afterbegin', ribbon);
-    document.body.classList.add('cms-active');
-    
+        
+    // formatting commands
     for (var command in aloha.ui.commands) {
         $('.cms-button-' + command).on('click', aloha.ui.command(aloha.ui.commands[command]));
     }
+    
+    // enable/disable editor
+    document.body.classList.add('cms-active');
+    // $('.enable-editing').on('click', function(){
+    //     document.body.classList.add('cms-active');    
+    // });
+    // $('.disable-editing').on('click', function(){
+    //     document.body.classList.remove('cms-active');
+    // });
 });
 
 /**
@@ -67,7 +76,6 @@ angular.module('cheeky', ['angular-cache'])
                         window.aloha($element[0]);    
                         $element.addClass('cms-edit-active');
                     });
-                    
                 }
             };
         }
