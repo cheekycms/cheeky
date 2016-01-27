@@ -11,6 +11,10 @@ domReady(function () {
     var ribbon = template.innerHTML;
     document.body.insertAdjacentHTML('afterbegin', ribbon);
     document.body.classList.add('cms-active');
+    
+    for (var command in aloha.ui.commands) {
+        $('.cms-button-' + command).on('click', aloha.ui.command(aloha.ui.commands[command]));
+    }
 });
 
 /**
