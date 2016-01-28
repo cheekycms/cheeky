@@ -175,6 +175,9 @@ body.cheeky-active {
         position: absolute;
         top: 0;
         right: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         content: "Click to edit";
         background-color: #1370AB;
         padding: 4px;
@@ -182,14 +185,21 @@ body.cheeky-active {
         font-weight: bold;
         border-radius: 0 0 0 4px;
         z-index: 10000;
+        background: -moz-linear-gradient(left, rgba(19,112,171,1) 0%, rgba(19,112,171,1) 1%, rgba(19,112,171,0) 50%);
+        background: -webkit-linear-gradient(left, rgba(19,112,171,1) 0%,rgba(19,112,171,1) 1%,rgba(19,112,171,0) 50%);
+        background: linear-gradient(to right, rgba(19,112,171,1) 0%,rgba(19,112,171,1) 1%,rgba(19,112,171,0) 50%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1370ab', endColorstr='#001370ab',GradientType=1 );
     }
 }
 .cheeky-editable.cheeky-edit-active {
     background-color: rgba(255, 255, 0, 0.5);
+    padding-top: 26px;
     &::before {
         position: absolute;
         top: 0;
         right: 0;
+        left: 0;
+        width: 100%;
         content: "Edit: Active";
         background-color: yellow;
         padding: 4px;
@@ -197,6 +207,11 @@ body.cheeky-active {
         font-weight: bold;
         border-radius: 0 0 0 4px;
         z-index: 10000;
+        border-bottom: 1px solid lightgray;
+        background: -moz-linear-gradient(left, rgba(255,255,0,1) 0%, rgba(255,255,0,1) 1%, rgba(255,255,0,0) 50%, rgba(255,255,0,0) 100%);
+        background: -webkit-linear-gradient(left, rgba(255,255,0,1) 0%,rgba(255,255,0,1) 1%,rgba(255,255,0,0) 50%,rgba(255,255,0,0) 100%);
+        background: linear-gradient(to right, rgba(255,255,0,1) 0%,rgba(255,255,0,1) 1%,rgba(255,255,0,0) 50%,rgba(255,255,0,0) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff00', endColorstr='#00ffff00',GradientType=1 );
     }
 }
 
