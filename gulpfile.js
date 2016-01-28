@@ -22,7 +22,7 @@ gulp.task('serve', function(done){
 });
 
 gulp.task('build', function(done){
-    runSequence('clean', ['jsApp', 'jsVendor', 'jsCheeky', 'jsCheekyEditor', 'styles', 'templates', 'images', 'content'], done);
+    runSequence('clean', ['jsApp', 'jsVendor', 'jsCheeky', 'jsCheekyEditor', 'demostyles', 'cheekystyles', 'templates', 'images', 'content'], done);
 });
 
 // components
@@ -35,7 +35,8 @@ gulp.task('jsVendor', jsVendor);
 gulp.task('jsCheeky', jsCheeky);
 gulp.task('jsCheekyEditor', jsCheekyEditor);
 gulp.task('run', run);
-gulp.task('styles', ['fonts'], styles);
+gulp.task('demostyles', ['fonts'], demostyles);
+gulp.task('cheekystyles', ['fonts'], cheekystyles);
 gulp.task('templates', templates);
 gulp.task('watch', watch);
 
@@ -108,8 +109,19 @@ function run(){
     });
 }
 
-function styles() {
-    return gulp.src(config.src.less)
+function cheekystyles() {
+    return gulp.src(config.src.cheekyless)
+        .pipe(sourcemaps.init())
+        .pipe(rename('cheekystyles.css'))
+        .pipe(less({
+            paths: [__dirname]
+        }))
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(config.build.output.css));
+}
+
+function demostyles() {
+    return gulp.src(config.src.demoless)
         .pipe(sourcemaps.init())
         .pipe(less({
             paths: [
@@ -117,7 +129,7 @@ function styles() {
                 path.join(__dirname, 'bower_components')
             ]
         }))
-        .pipe(rename('styles.css'))
+        .pipe(rename('demostyles.css'))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(config.build.output.css));
 }
@@ -129,7 +141,8 @@ function templates() {
 }
 
 function watch(){
-    gulp.watch('src/**/*.less', ['styles']);
+    gulp.watch('src/cheeky-ui/content/styles/cheeky/**/*.less', ['cheekystyles']);
+    gulp.watch('src/cheeky-ui/content/styles/demo/**/*.less', ['demostyles']);
     gulp.watch(config.src.js.app, ['jsApp']);
     gulp.watch(config.src.js.cheekyjs, ['jsCheeky']);
     gulp.watch(config.src.js.cheekyeditorjs, ['jsCheekyEditor']);

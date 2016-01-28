@@ -4,9 +4,12 @@ module.exports = {
     
     // source file paths
     src: {
-        
+
         // application less files
-        less: 'src/cheeky-ui/content/**/index.less',
+        cheekyless: 'src/cheeky-ui/content/styles/cheeky/**/index.less',
+
+        // demo less files
+        demoless: 'src/cheeky-ui/content/styles/demo/**/index.less',
 
         // html content
         content: [

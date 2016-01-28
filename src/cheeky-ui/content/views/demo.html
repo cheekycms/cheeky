@@ -42,44 +42,32 @@
     
 </div>
 
-<script type="text/ng-template" id="template/cms-ribbon">
-<nav id="cms-ribbon" class="navbar navbar-default navbar-fixed-top navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#cms-ribbon-collapse" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <span class="navbar-brand"><div class="cheeky">Cheeky</div>CMS</span>
-        </div>
+<script type="text/ng-template" id="template/cheeky-ribbon">
+<div id="cheeky-ribbon">
+    <div class="cheeky-container">
+        <span class="cheeky-ribbon-brand"><div class="cheeky-title">Cheeky</div>CMS</span>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="cms-ribbon-collapse">
-            <form class="navbar-form navbar-left ng-pristine ng-valid ng-submitted">
-                <div class="form-group">
-                    <button type="button" class="btn btn-default cms-button-bold" title="Bold">B</button>
-                    <button type="button" class="btn btn-default cms-button-italic" title="Italicize">I</button>
-                    <button type="button" class="btn btn-default cms-button-underline" title="Underline">U</button>
-                    <select class="cms-select-block form-control" title="Type">
-                        <option value="H1">H1</option>
-                        <option value="H2">H2</option>
-                        <option value="H3">H3</option>
-                        <option value="H4">H4</option>
-                        <option value="Paragraph">Paragraph</option>
-                    </select>
-                    <button type="button" class="btn btn-default cms-button-ol" title="Numbered List"><span class="cux-icon-list_1"></span></button>
-                    <button type="button" class="btn btn-default cms-button-ul" title="Bulleted List"><span class="cux-icon-list_1"></span></button>
-                    <button type="button" class="btn btn-default cms-button-link" title="Link"><span class="cux-icon-link"></span></button>
-                    <button type="button" class="btn btn-default cms-button-image" title="Image"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></button>
-                </div>
-            </form>
-            <form class="navbar-form navbar-right ng-pristine ng-valid">
-                <button type="button" class="btn btn-default navbar-btn" id="cms-cancel">Cancel <span class="cux-icon-close"></span></button>
-                <button type="button" class="btn btn-primary navbar-btn" id="cms-save">Save <span class="cux-icon-save"></span></button>
-            </form>
-        </div>
+        <form class="cheeky-ribbon-left ng-pristine ng-valid ng-submitted">
+            <button type="button" class="cheeky-button-bold" title="Bold">B</button>
+            <button type="button" class="cheeky-button-italic" title="Italicize">I</button>
+            <button type="button" class="cheeky-button-underline" title="Underline">U</button>
+            <select title="Type" class="cheeky-select-textstyle">
+                <option value="H1">H1</option>
+                <option value="H2">H2</option>
+                <option value="H3">H3</option>
+                <option value="H4">H4</option>
+                <option value="Paragraph">Paragraph</option>
+            </select>
+            <button type="button" class="cheeky-button-icon cheeky-button-ol" title="Numbered List"><span class="cux-icon-list_1"></span></button>
+            <button type="button" class="cheeky-button-icon cheeky-button-ul" title="Bulleted List"><span class="cux-icon-list_1"></span></button>
+            <button type="button" class="cheeky-button-icon cheeky-button-link" title="Link"><span class="cux-icon-link"></span></button>
+            <button type="button" class="cheeky-button-icon cheeky-button-image" title="Image"></button>
+        </form>
+
+        <form class="cheeky-ribbon-right ng-pristine ng-valid">
+            <button type="button" class="cheeky-btn-cancel" id="cheeky-cancel">Cancel <span class="cux-icon-close"></span></button>
+            <button type="button" class="cheeky-btn-save" id="cheeky-save">Save <span class="cux-icon-save"></span></button>
+        </form>
     </div>
-</nav>
+</div>
 </script>

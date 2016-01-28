@@ -1,0 +1,83 @@
+// VARIABLES
+@brand-primary: darken(#428bca, 6.5%); // #337ab7
+@brand-success: #5cb85c;
+@brand-info: #5bc0de;
+@brand-warning: #f0ad4e;
+@brand-danger: #d9534f;
+@link-color: @brand-primary;
+@link-hover-color: darken(@link-color, 15%);
+@link-hover-decoration: underline;
+@gray-base: #000;
+@gray-light: lighten(@gray-base, 46.7%); // #777
+@font-size-base: 14px;
+@font-size-small: ceil((@font-size-base * 0.85)); // ~12px
+@font-size-large: ceil((@font-size-base * 1.25)); // ~18px
+@line-height-base: 1.428571429; // 20/14
+@line-height-large:         1.3333333; // extra decimals for Win 8.1 Chrome
+@line-height-small:         1.5;
+@line-height-computed: floor((@font-size-base * @line-height-base)); // ~20px
+@padding-base-vertical:     6px;
+@padding-base-horizontal:   12px;
+@padding-large-vertical:    10px;
+@padding-large-horizontal:  16px;
+@padding-small-vertical:    5px;
+@padding-small-horizontal:  10px;
+@padding-xs-vertical:       1px;
+@padding-xs-horizontal:     5px;
+@grid-gutter-width: 30px;
+@grid-columns: 12;
+@screen-xs: 480px;
+@screen-xs-min: @screen-xs;
+@screen-phone:  @screen-xs-min;
+@screen-sm: 768px;
+@screen-sm-min: @screen-sm;
+@screen-tablet: @screen-sm-min;
+@screen-md: 992px;
+@screen-md-min: @screen-md;
+@screen-desktop: @screen-md-min;
+@screen-lg: 1200px;
+@screen-lg-min: @screen-lg;
+@screen-lg-desktop:          @screen-lg-min;
+@screen-xs-max: (@screen-sm-min - 1);
+@screen-sm-max: (@screen-md-min - 1);
+@screen-md-max: (@screen-lg-min - 1);
+@container-tablet: (720px + @grid-gutter-width);
+@container-sm: @container-tablet;
+@container-desktop: (940px + @grid-gutter-width);
+@container-md: @container-desktop;
+@container-large-desktop: (1140px + @grid-gutter-width);
+@container-lg: @container-large-desktop;
+@grid-float-breakpoint: @screen-sm-min;
+@border-radius-base: 4px;
+@border-radius-large: 6px;
+@border-radius-small: 3px;
+@btn-border-radius-base: @border-radius-base;
+@btn-font-weight: normal;
+@btn-default-color: #333;
+@btn-default-bg: #fff;
+@btn-default-border: #ccc;
+@btn-primary-color: #fff;
+@btn-primary-color: #fff;
+@btn-primary-bg: @brand-primary;
+@btn-primary-border: darken(@btn-primary-bg, 5%);
+@btn-success-color: #fff;
+@btn-success-bg: @brand-success;
+@btn-success-border: darken(@btn-success-bg, 5%);
+@btn-info-color: #fff;
+@btn-info-bg: @brand-info;
+@btn-info-border: darken(@btn-info-bg, 5%);
+@btn-warning-color: #fff;
+@btn-warning-bg: @brand-warning;
+@btn-warning-border: darken(@btn-warning-bg, 5%);
+@btn-danger-color: #fff;
+@btn-danger-bg: @brand-danger;
+@btn-danger-border: darken(@btn-danger-bg, 5%);
+@btn-link-disabled-color: @gray-light;
+@btn-border-radius-base: @border-radius-base;
+@btn-border-radius-large: @border-radius-large;
+@btn-border-radius-small: @border-radius-small;
+@cursor-disabled: not-allowed;
+@zindex-navbar: 1000;
+@zindex-navbar-fixed: 1030;
+@input-height-base: (@line-height-computed + (@padding-base-vertical * 2) + 2);
+@input-height-small: (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
