@@ -22,7 +22,7 @@ gulp.task('serve', function(done){
 });
 
 gulp.task('build', function(done){
-    runSequence('clean', ['jsApp', 'jsVendor', 'jsCheeky', 'jsCheekyEditor', 'demostyles', 'cheekystyles', 'templates', 'images', 'content'], done);
+    runSequence('clean', ['jsApp', 'jsVendor', 'jsCheeky', 'jsCheekyEditor', 'styles', 'cheekystyles', 'templates', 'images', 'content'], done);
 });
 
 // components
@@ -35,7 +35,7 @@ gulp.task('jsVendor', jsVendor);
 gulp.task('jsCheeky', jsCheeky);
 gulp.task('jsCheekyEditor', jsCheekyEditor);
 gulp.task('run', run);
-gulp.task('demostyles', ['fonts'], demostyles);
+gulp.task('styles', ['fonts'], styles);
 gulp.task('cheekystyles', ['fonts'], cheekystyles);
 gulp.task('templates', templates);
 gulp.task('watch', watch);
@@ -110,18 +110,16 @@ function run(){
 }
 
 function cheekystyles() {
-    return gulp.src(config.src.cheekyless)
+    return gulp.src(config.src.styles.cheekyeditor)
         .pipe(sourcemaps.init())
-        .pipe(rename('cheekystyles.css'))
-        .pipe(less({
-            paths: [__dirname]
-        }))
+        .pipe(less())
+        .pipe(rename('cheeky-editor.css'))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(config.build.output.css));
 }
 
-function demostyles() {
-    return gulp.src(config.src.demoless)
+function styles() {
+    return gulp.src(config.src.styles.cheeky)
         .pipe(sourcemaps.init())
         .pipe(less({
             paths: [
@@ -129,7 +127,7 @@ function demostyles() {
                 path.join(__dirname, 'bower_components')
             ]
         }))
-        .pipe(rename('demostyles.css'))
+        .pipe(rename('styles.css'))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(config.build.output.css));
 }
@@ -141,8 +139,8 @@ function templates() {
 }
 
 function watch(){
-    gulp.watch('src/cheeky-ui/content/styles/cheeky/**/*.less', ['cheekystyles']);
-    gulp.watch('src/cheeky-ui/content/styles/demo/**/*.less', ['demostyles']);
+    gulp.watch(config.src.styles.cheekyeditor, ['cheekystyles']);
+    gulp.watch(config.src.styles.cheeky, ['styles']);
     gulp.watch(config.src.js.app, ['jsApp']);
     gulp.watch(config.src.js.cheekyjs, ['jsCheeky']);
     gulp.watch(config.src.js.cheekyeditorjs, ['jsCheekyEditor']);

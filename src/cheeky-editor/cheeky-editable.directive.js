@@ -5,17 +5,17 @@ var domReady = function (callback) {
 
 domReady(function () {
     // inject ribbon
-    var template = document.getElementById('template/cms-ribbon');
+    var template = document.getElementById('template/cheeky-ribbon');
     var ribbon = template.innerHTML;
     document.body.insertAdjacentHTML('afterbegin', ribbon);
         
     // formatting commands
     for (var command in aloha.ui.commands) {
-        $('.cms-button-' + command).on('click', aloha.ui.command(aloha.ui.commands[command]));
+        $('.cheeky-button-' + command).on('click', aloha.ui.command(aloha.ui.commands[command]));
     }
     
     // enable/disable editor
-    document.body.classList.add('cms-active');
+    document.body.classList.add('cheeky-active');
     // $('.enable-editing').on('click', function(){
     //     document.body.classList.add('cms-active');    
     // });
@@ -38,11 +38,11 @@ angular.module('cheeky').directive('cheekyEditable', ['cheekyCMS',
                 var path = attrs.path || attrs.cheekyContent;
 
                 var $element = angular.element(element);
-                $element.addClass('cms-editable');
+                $element.addClass('cheeky-editable');
 
                 $element.on('click', function (e) {
                     window.aloha($element[0]);
-                    $element.addClass('cms-edit-active');
+                    $element.addClass('cheeky-edit-active');
                 });
             }
         };

@@ -5,12 +5,6 @@ module.exports = {
     // source file paths
     src: {
 
-        // application less files
-        cheekyless: 'src/cheeky-ui/content/styles/cheeky/**/index.less',
-
-        // demo less files
-        demoless: 'src/cheeky-ui/content/styles/demo/**/index.less',
-
         // html content
         content: [
             'src/cheeky-ui/content/**/*.html',
@@ -56,6 +50,15 @@ module.exports = {
                 'src/cheeky-editor/module.js',
                 'src/cheeky-editor/**/*.js'
             ]
+        },
+        
+        styles: {
+            
+            // cheeky editor styles
+            cheekyeditor: 'src/cheeky-editor/styles/index.less',
+
+            // demo less files
+            cheeky: 'src/cheeky-ui/content/styles/index.less'
         },
 
         // angular templates
