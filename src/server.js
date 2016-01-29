@@ -20,24 +20,6 @@ var inert = {
 	register: require('inert')
 };
 
-// template rendering
-var vision = {
-	register: require('vision')
-};
-var visionary = {
-	register: require('visionary'),
-	options: {
-		engines: {
-			html: 'handlebars'
-		},
-		layout: 'default',
-		path: Path.join(__dirname, config.staticContentPath),
-		partialsPath: Path.join(__dirname, config.staticContentPath, 'views/partials'),
-		layoutPath: Path.join(__dirname, config.staticContentPath, 'views/layouts'),
-		isCached: !config.debug
-	}
-};
-
 // our modules, api & content
 var api = {
 	register: require('./cheeky-api')
@@ -58,7 +40,7 @@ server.connection({
 });
 
 // register plugins
-server.register([good, inert, vision, visionary, api, ui], function (err) {
+server.register([good, inert, api, ui], function (err) {
 	if (err) {
 		throw err;
 	}
