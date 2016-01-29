@@ -164,11 +164,11 @@ body.cheeky-active {
     padding-top: @ribbon-height;
 }
 .cheeky-editable {
-    outline: 1px dashed #1370AB;
+    outline: 1px dashed #428bca;
     position: relative;
     &:hover:not(.cheeky-edit-active) {
         background-color: rgba(19, 112, 171, 0.5);
-        outline: 2px dashed #1370AB;
+        outline: 2px dashed #428bca;
         cursor: pointer;
     }
     &:hover:not(.cheeky-edit-active)::before {
@@ -179,7 +179,7 @@ body.cheeky-active {
         width: 100%;
         height: 100%;
         content: "Click to edit";
-        background-color: #1370AB;
+        background-color: #428bca;
         padding: 4px;
         color: white;
         font-weight: bold;
@@ -339,35 +339,31 @@ body.cheeky-active {
         float: right;
     }
     .cheeky-btn-edit {
-        font-weight: bold;
         color: white;
-        background-color: #1370AB;
+        background-color: #428bca;
         &:hover {
-            background-color: lighten(#1370AB,15%);
+            background-color: lighten(#428bca,15%);
         }
     }
     .cheeky-btn-preview {
-        font-weight: bold;
         color: white;
-        background-color: #C36121;
+        background-color: #5cb85c;
         &:hover {
-            background-color: lighten(#C36121,15%);
+            background-color: lighten(#5cb85c,15%);
         }
     }
     .cheeky-btn-cancel {
-        font-weight: bold;
-        color: white;
-        background-color: darken(#A93C47,15%);
+        color: #333;
+        background-color: #fff;
         &:hover {
-            background-color: #A93C47;
+            background-color: darken(#fff,15%);
         }
     }
     .cheeky-btn-save {
-        font-weight: bold;
         color: white;
-        background-color: #7E9E16;
+        background-color: #428bca;
         &:hover {
-            background-color: lighten(#7E9E16,15%);
+            background-color: lighten(#428bca,15%);
         }
     }
 }
