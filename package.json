@@ -30,7 +30,6 @@
     "glob": "^6.0.4",
     "good": "^6.4.0",
     "good-console": "^5.3.0",
-    "handlebars": "^4.0.5",
     "hapi": "^12.1.0",
     "hoek": "^3.0.4",
     "inert": "^3.2.0",
@@ -38,9 +37,7 @@
     "kerberos": "0.0.18",
     "lodash": "^4.0.1",
     "moment": "^2.11.1",
-    "mongoose": "^4.3.7",
-    "vision": "^4.0.1",
-    "visionary": "^4.0.0"
+    "mongoose": "^4.3.7"
   },
   "devDependencies": {
     "bower": "^1.7.2",
