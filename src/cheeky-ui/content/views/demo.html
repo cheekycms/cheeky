@@ -19,11 +19,6 @@
 
 <body ng-app="app">
     <div class="container" ng-controller="DefaultController">
-        <div class="page-header">
-            <h1>Cheeky CMS Examples</h1>
-            <p class="lead">Examples of using Cheeky CMS with an angular application.</p>
-        </div>
-
         <h3>Editing Demo</h3>
         <p cheeky-content="demo.demotext1" cheeky-editable>
             The rules of the Hunger Games are simple. In punishment for the uprising, each of the twelve districts must provide one girl
@@ -31,40 +26,6 @@
             that could hold anything from a burning desert to a frozen wasteland. Over a period of several weeks, the competitors
             must fight to the death. The last tribute standing wins.
         </p>
-
-        <h3>Configuration</h3>
-        <p>Configure your angular application by defining the keys and endpoints</p>
-        <pre>angular.module('app', ['ngSanitize', 'cheeky'])
-    .config(function(cheekyCMSProvider){
-        cheekyCMSProvider.map({
-            "website1": "/path/to/cheeky-cms/website1",
-            "website2": "/path/to/cheeky-cms/website2"
-        });
-    });</pre>
-        <p>Keys map to the first segment of a content path. If the content key in the CMS for a particular piece of content
-            is <code>website1.aboutpage.title</code>, the key is <code>website1</code>.</p>
-        <p>The first time the application encounters the key <code>website1</code>, it will download and cache all content under
-            that path so further calls to that same key will not make a call to the REST endpoint.</p>
-
-        <h3>Getting content with angular.js</h3>
-
-        <p>Map content to a CMS key using a directive as an element</p>
-        <pre>// using an element
-&lt;cheeky-content path=&quot;content.msgs.welcome&quot;&gt;&lt;/cheeky-content&gt;
-
-// using an attribute
-&lt;div cheeky-content=&quot;content.msgs.welcome&quot;&gt;&lt;/div&gt;</pre>
-
-        <h3>Enable content editing with angular.js</h3>
-        <p>Content can be made editable by including the following script tag and adding the <code>cheeky-editable</code> attribute.</p>
-        <pre>&lt;script src=&quot;public/js/cheeky-editor.min.js&quot;&gt;&lt;/script&gt;</pre>
-        <pre>// using an element
-&lt;cheeky-content path=&quot;content.msgs.welcome&quot; cheeky-editable&gt;&lt;/cheeky-content&gt;
-
-// using an attribute
-&lt;div cheeky-content=&quot;content.msgs.welcome&quot; cheeky-editable&gt;&lt;/div&gt;</pre>
-        <p>Enabling / Disabling editing can be done by removing the script based on user rights or by omitting the script in
-            production environments (in multi-environment sites).</p>
 
     </div>
 

@@ -15,9 +15,9 @@ exports.register = function(server, options, next){
     // register route to serve index file
 	server.route({
 		method: 'GET',
-		path: '/demo/{path*}',
+		path: '/docs/{view}',
 		handler: function (request, reply) {
-            reply.file('views/demo.html');
+            reply.file('views/'+request.params.view+'.html');
 		}
 	});
 

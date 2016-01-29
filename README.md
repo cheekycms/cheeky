@@ -12,3 +12,12 @@ $ npm install
 $ bower install
 $ gulp serve
 ```
+
+### CMS Interface
+http://localhost:6551/
+
+### Docs
+http://localhost:6551/docs/config
+
+### Demo
+http://localhost:6551/docs/demo

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Cheeky Configuration</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <base href="/" />
+    <link rel="icon" type="image/png" href="public/img/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="public/img/favicon-16x16.png" sizes="16x16" />
+    <link rel="stylesheet" type="text/css" href="public/css/styles.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+
+<body ng-app="app">
+    <div class="container" ng-controller="DefaultController">
+        <div class="page-header">
+            <h1>Cheeky CMS Examples</h1>
+            <p class="lead">Examples of using Cheeky CMS with an angular application.</p>
+        </div>
+
+        <h3>Configuration</h3>
+        <p>Configure your angular application by defining the keys and endpoints</p>
+        <pre>angular.module('app', ['ngSanitize', 'cheeky'])
+    .config(function(cheekyCMSProvider){
+        cheekyCMSProvider.map({
+            "website1": "/path/to/cheeky-cms/website1",
+            "website2": "/path/to/cheeky-cms/website2"
+        });
+    });</pre>
+        <p>Keys map to the first segment of a content path. If the content key in the CMS for a particular piece of content
+            is <code>website1.aboutpage.title</code>, the key is <code>website1</code>.</p>
+        <p>The first time the application encounters the key <code>website1</code>, it will download and cache all content under
+            that path so further calls to that same key will not make a call to the REST endpoint.</p>
+
+        <h3>Getting content with angular.js</h3>
+
+        <p>Map content to a CMS key using a directive as an element</p>
+        <pre>// using an element
+&lt;cheeky-content path=&quot;content.msgs.welcome&quot;&gt;&lt;/cheeky-content&gt;
+
+// using an attribute
+&lt;div cheeky-content=&quot;content.msgs.welcome&quot;&gt;&lt;/div&gt;</pre>
+
+        <h3>Enable content editing with angular.js</h3>
+        <p>Content can be made editable by including the following script tag and adding the <code>cheeky-editable</code> attribute.</p>
+        <pre>&lt;script src=&quot;public/js/cheeky-editor.min.js&quot;&gt;&lt;/script&gt;</pre>
+        <pre>// using an element
+&lt;cheeky-content path=&quot;content.msgs.welcome&quot; cheeky-editable&gt;&lt;/cheeky-content&gt;
+
+// using an attribute
+&lt;div cheeky-content=&quot;content.msgs.welcome&quot; cheeky-editable&gt;&lt;/div&gt;</pre>
+        <p>Enabling / Disabling editing can be done by removing the script based on user rights or by omitting the script in
+            production environments (in multi-environment sites).</p>
+
+    </div>
+    
+</body>
+
+</html>
