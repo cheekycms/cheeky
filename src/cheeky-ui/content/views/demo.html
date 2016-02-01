@@ -18,15 +18,85 @@
 </head>
 
 <body ng-app="app">
-    <div class="container" ng-controller="DefaultController">
-        <h3>Editing Demo</h3>
-        <p cheeky-content="demo.demotext1" cheeky-editable>
-            The rules of the Hunger Games are simple. In punishment for the uprising, each of the twelve districts must provide one girl
-            and one boy, called tributes, to participate. The twenty-four tributes will be imprisoned in a vast outdoor arena
-            that could hold anything from a burning desert to a frozen wasteland. Over a period of several weeks, the competitors
-            must fight to the death. The last tribute standing wins.
-        </p>
+    <div ng-controller="DefaultController">
+        <!--<div class="container" ng-controller="DefaultController">-->
+            <!--<h3>Editing Demo</h3>-->
+            <!--<p cheeky-content="demo.demotext1" cheeky-editable>-->
+                <!--The rules of the Hunger Games are simple. In punishment for the uprising, each of the twelve districts must provide one girl-->
+                <!--and one boy, called tributes, to participate. The twenty-four tributes will be imprisoned in a vast outdoor arena-->
+                <!--that could hold anything from a burning desert to a frozen wasteland. Over a period of several weeks, the competitors-->
+                <!--must fight to the death. The last tribute standing wins.-->
+            <!--</p>-->
 
+        <!--</div>-->
+
+
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Project name</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <form class="navbar-form navbar-right">
+                        <div class="form-group">
+                            <input type="text" placeholder="Email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Password" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-success">Sign in</button>
+                    </form>
+                </div><!--/.navbar-collapse -->
+            </div>
+        </nav>
+
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <div class="container">
+                <h1 cheeky-content="demo.h1-1" cheeky-editable>Editing Demo</h1>
+                <p cheeky-content="demo.p-1" cheeky-editable>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+                <p cheeky-content="demo.btn-1" cheeky-editable><a class="btn btn-primary btn-lg" href="#" role="button">Get started &raquo;</a></p>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Example row of columns -->
+            <div class="row">
+                <div class="col-md-4">
+                    <h2 cheeky-content="demo.h2-1" cheeky-editable>Fast</h2>
+                    <img src="http://placehold.it/400x200" alt="Placeholder Image"/>
+                    <p cheeky-content="demo.p-2" cheeky-editable>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                </div>
+                <div class="col-md-4">
+                    <h2 cheeky-content="demo.h2-2" cheeky-editable>Lightweight</h2>
+                    <img src="http://placehold.it/400x200" alt="Placeholder Image"/>
+                    <p cheeky-content="demo.p-3" cheeky-editable>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                </div>
+                <div class="col-md-4">
+                    <h2 cheeky-content="demo.h2-3" cheeky-editable>Powerful</h2>
+                    <img src="http://placehold.it/400x200" alt="Placeholder Image"/>
+                    <p cheeky-content="demo.p-4" cheeky-editable>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                </div>
+            </div>
+
+            <hr>
+
+            <footer class="row">
+                <div class="col-lg-8">
+                    <p cheeky-content="demo.p-5" cheeky-editable>&copy; 2016 Cheeky CMS</p>
+                </div>
+            </footer>
+        </div> <!-- /container -->
     </div>
 
     <script type="text/ng-template" id="template/cheeky-ribbon">
