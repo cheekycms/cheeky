@@ -175,24 +175,19 @@
     &:hover:not(.cheeky-edit-active)::before {
         position: absolute;
         top: 0;
-        right: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
         content: "Click to edit";
         font-size: 14px;
         line-height: 1;
         background-color: #428bca;
+        -webkit-box-shadow: 4px 4px 4px 0 rgba(0,0,0,.5);
+        box-shadow: 4px 4px 4px 0 rgba(0,0,0,.5);
         padding: 2px 4px;
         margin: 0;
         color: white;
         font-weight: bold;
         border-radius: 0 0 0 4px;
         z-index: 10000;
-        background: -moz-linear-gradient(left, rgba(19,112,171,1) 0%, rgba(19,112,171,1) 1%, rgba(19,112,171,0) 50%);
-        background: -webkit-linear-gradient(left, rgba(19,112,171,1) 0%,rgba(19,112,171,1) 1%,rgba(19,112,171,0) 50%);
-        background: linear-gradient(to right, rgba(19,112,171,1) 0%,rgba(19,112,171,1) 1%,rgba(19,112,171,0) 50%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1370ab', endColorstr='#001370ab',GradientType=1 );
     }
 }
 .cheeky-editable.cheeky-edit-active {
