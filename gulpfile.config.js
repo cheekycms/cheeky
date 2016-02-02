@@ -66,7 +66,11 @@ module.exports = {
             'src/cheeky-ui/app/**/*.view.html',
             'src/cheeky-ui/app/**/*.directive.html'   
         ],
-        templateModuleName: 'app.default'
+        
+        // cheeky ribbon/editor templates
+        cheekyTemplates: [
+            'src/cheeky-editor/**/*.html'  
+        ]
     },
 
     // build paths

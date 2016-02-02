@@ -22,7 +22,7 @@ gulp.task('serve', function(done){
 });
 
 gulp.task('build', function(done){
-    runSequence('clean', ['jsApp', 'jsVendor', 'jsCheeky', 'jsCheekyEditor', 'styles', 'cheekystyles', 'templates', 'images', 'content'], done);
+    runSequence('clean', ['jsApp', 'jsVendor', 'jsCheeky', 'jsCheekyEditor', 'styles', 'cheekystyles', 'templates', 'ckTemplates', 'images', 'content'], done);
 });
 
 // components
@@ -33,10 +33,8 @@ gulp.task('images', images);
 gulp.task('jsApp', jsApp);
 gulp.task('jsVendor', jsVendor);
 gulp.task('jsCheeky', jsCheeky);
-gulp.task('jsCheekyEditor', jsCheekyEditor);
 gulp.task('run', run);
 gulp.task('styles', ['fonts'], styles);
-gulp.task('cheekystyles', ['fonts'], cheekystyles);
 gulp.task('templates', templates);
 gulp.task('watch', watch);
 
@@ -81,18 +79,6 @@ function jsCheeky() {
         .pipe(gulp.dest(config.build.output.js));
 }
 
-function jsCheekyEditor() {
-    // TODO: source template? should be separate file so it can be overridden
-    return gulp.src(config.src.js.cheekyeditorjs)
-        .pipe(sourcemaps.init())
-        .pipe(ngannotate())
-        .pipe(wrap('(function(angular){\n<%= contents %>\n})(window.angular);'))
-        .pipe(concat('cheeky-editor.min.js'))
-        .pipe(uglify())
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest(config.build.output.js));
-}
-
 function jsVendor() {
     return gulp.src(config.src.js.vendor)
         .pipe(concat('vendor.min.js'))
@@ -107,15 +93,6 @@ function run(){
         ignore: ['public/*'],
         env: {NODE_ENV: 'development', DEBUG: true}
     });
-}
-
-function cheekystyles() {
-    return gulp.src(config.src.styles.cheekyeditor)
-        .pipe(sourcemaps.init())
-        .pipe(less())
-        .pipe(rename('cheeky-editor.css'))
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest(config.build.output.css));
 }
 
 function styles() {
@@ -134,7 +111,7 @@ function styles() {
 
 function templates() {
     return gulp.src(config.src.templates)
-        .pipe(templateCache({ module: config.src.templateModuleName }))
+        .pipe(templateCache({ module: 'app.default' }))
         .pipe(gulp.dest(config.build.output.js));
 }
 
@@ -144,5 +121,40 @@ function watch(){
     gulp.watch(config.src.js.app, ['jsApp']);
     gulp.watch(config.src.js.cheekyjs, ['jsCheeky']);
     gulp.watch(config.src.js.cheekyeditorjs, ['jsCheekyEditor']);
-    gulp.watch('src/**/*.html', ['templates', 'content']);
+    gulp.watch('src/**/*.html', ['templates', 'content', 'ckTemplates']);
+}
+
+/**
+ * Cheeky Editor / Ribbon Build
+ * Eventually, all this junk gets moved to its own repo/gulpfile
+ */
+gulp.task('jsCheekyEditor', jsCheekyEditor);
+gulp.task('cheekystyles', cheekystyles);
+gulp.task('ckTemplates', ckTemplates);
+
+function jsCheekyEditor() {
+    // TODO: source template? should be separate file so it can be overridden
+    return gulp.src(config.src.js.cheekyeditorjs)
+        .pipe(sourcemaps.init())
+        .pipe(ngannotate())
+        .pipe(wrap('(function(angular){\n<%= contents %>\n})(window.angular);'))
+        .pipe(concat('cheeky-editor.min.js'))
+        .pipe(uglify())
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(config.build.output.js));
+}
+
+function cheekystyles() {
+    return gulp.src(config.src.styles.cheekyeditor)
+        .pipe(sourcemaps.init())
+        .pipe(less())
+        .pipe(rename('cheeky-editor.css'))
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(config.build.output.css));
+}
+
+function ckTemplates() {
+    return gulp.src(config.src.cheekyTemplates)
+        .pipe(templateCache({ module: 'cheeky', filename: 'cheeky-editor.tpls.js' }))
+        .pipe(gulp.dest(config.build.output.js));
 }
