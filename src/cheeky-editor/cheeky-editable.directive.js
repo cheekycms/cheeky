@@ -9,16 +9,30 @@ angular.module('cheeky').directive('cheekyEditable', ['$document', 'cheekyCMS',
             link: function (scope, element, attrs) {
                 if (!window.aloha) return; // if aloha does not exist, editing is disabled
                         
-                var path = attrs.path || attrs.cheekyContent;
+                var path = (attrs.path || attrs.cheekyContent),
+                    $element = angular.element(element);
+                
+                scope.$on('$cheekyEditModeActive', onEditMode);
+                scope.$on('$cheekyViewModeActive', onViewMode);
+                
+                function onEditMode(){
+                    $element.addClass('cheeky-editable');
+                    $element.on('click', onEditableClick);
+                }
+                
+                function onViewMode(){
+                    $element.removeClass('cheeky-editable');
+                    $element.off('click', onEditableClick);
+                }
 
-                var $element = angular.element(element);
-                $element.addClass('cheeky-editable');
-
-                $element.on('click', function (e) {
-                    window.aloha($element[0]);
-                    $element.addClass('cheeky-edit-active');
+                scope.$on('$destroy', function(){
+                    $element.off('click', onEditableClick);
                 });
                 
+                function onEditableClick(){
+                    window.aloha($element[0]);
+                    $element.addClass('cheeky-edit-active');
+                }
             }
         };
     }

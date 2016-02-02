@@ -37,7 +37,30 @@ angular.module('cheeky').directive('cheekyRibbon', ['$document', 'cheekyCMS',
                 function onDocumentClick(){
                     console.log('ugh');
                 }
-            }
+            },
+            controller: ['$rootScope', '$scope', function($rootScope, $scope){
+                $scope.modes = {
+                    edit: 'edit',
+                    preview: 'preview'
+                };
+
+                // props
+                $scope.mode = $scope.modes.preview;
+                
+                // methods
+                $scope.showEditor = showEditor;
+                $scope.showPreview = showPreview;
+                
+                function showEditor(){
+                    $scope.mode = $scope.modes.edit;
+                    $rootScope.$broadcast('$cheekyEditModeActive', {});
+                }
+                
+                function showPreview(){
+                    $scope.mode = $scope.modes.preview;
+                    $rootScope.$broadcast('$cheekyViewModeActive', {});
+                }
+            }]
         };
     }
 ]);

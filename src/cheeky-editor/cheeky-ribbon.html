@@ -23,10 +23,10 @@
         </form>
 
         <form class="cheeky-ribbon-right ng-pristine ng-valid">
-            <button type="button" class="cheeky-btn-cancel" id="cheeky-cancel">Cancel <span class="cux-icon-close"></span></button>
-            <button type="button" class="cheeky-btn-save" id="cheeky-save">Save <span class="cux-icon-save"></span></button>
-            <button type="button" class="cheeky-btn-edit" id="cheeky-edit">Edit<span class="cux-icon-save"></span></button>
-            <button type="button" class="cheeky-btn-preview" id="cheeky-preview">Preview<span class="cux-icon-save"></span></button>
+            <button type="button" class="cheeky-btn-cancel" id="cheeky-cancel" ng-show="mode == modes.edit">Cancel <span class="cux-icon-close"></span></button>
+            <button type="button" class="cheeky-btn-save" id="cheeky-save" ng-show="mode == modes.edit">Save <span class="cux-icon-save"></span></button>
+            <button type="button" class="cheeky-btn-edit" id="cheeky-edit" ng-show="mode == modes.preview" ng-click="showEditor()">Edit<span class="cux-icon-save"></span></button>
+            <button type="button" class="cheeky-btn-preview" id="cheeky-preview" ng-show="mode == modes.edit" ng-click="showPreview()">Preview<span class="cux-icon-save"></span></button>
         </form>
     </div>
 </div>
