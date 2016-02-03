@@ -1,9 +1,15 @@
 'use strict';
 
+/**
+ * Cheeky event constants
+ * @ngdoc constant
+ * @name cheekyEvents
+ */
 angular.module('cheeky').constant('cheekyEvents', {
     showEditor: '$cheekyShowEditor',
     showPreview: '$cheekyShowPreview',
     cancelChanges: '$cheekyCancelChanges',
     saveChanges: '$cheekySaveChanges',
-    cleanSlate: '$cheekyCleanSlate'
+    beginEdit: '$cheekyBeginEdit',
+    endEdit: '$cheekyEndEdit',
 });

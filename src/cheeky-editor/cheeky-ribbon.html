@@ -2,24 +2,23 @@
     <div class="cheeky-container">
         <span class="cheeky-ribbon-brand"><div class="cheeky-title">Cheeky</div>CMS</span>
 
-        <form class="cheeky-ribbon-left ng-pristine ng-valid ng-submitted">
-            <button type="button" class="cheeky-button-bold" title="Bold">B</button>
-            <button type="button" class="cheeky-button-italic" title="Italicize">I</button>
-            <button type="button" class="cheeky-button-underline" title="Underline">U</button>
+        <form class="cheeky-ribbon-left" ng-show="mode == modes.edit" novalidate>
+            <button type="button" class="cheeky-button-bold" title="Bold" ng-click="formatBold($event)">B</button>
+            <button type="button" class="cheeky-button-italic" title="Italicize" ng-click="formatItalic($event)">I</button>
+            <button type="button" class="cheeky-button-underline" title="Underline" ng-click="formatUnderline($event)">U</button>
             <select title="Type" class="cheeky-select-textstyle">
-                <option value="H1">H1</option>
-                <option value="H2">H2</option>
-                <option value="H3">H3</option>
-                <option value="H4">H4</option>
-                <option value="Paragraph">Paragraph</option>
+                <option value="H1" ng-click="formatH1($event)">H1</option>
+                <option value="H2" ng-click="formatH2($event)">H2</option>
+                <option value="H3" ng-click="formatH3($event)">H3</option>
+                <option value="H4" ng-click="formatH4($event)">H4</option>
             </select>
-            <button type="button" class="cheeky-button-icon cheeky-button-ol" title="Numbered List"></button>
-            <button type="button" class="cheeky-button-icon cheeky-button-ul" title="Bulleted List"></button>
-            <button type="button" class="cheeky-button-icon cheeky-button-link" title="Link"></button>
-            <button type="button" class="cheeky-button-icon cheeky-button-image" title="Image"></button>
-            <button type="button" class="cheeky-button-icon cheeky-button-clrformat" title="Clear Formatting"></button>
-            <button type="button" class="cheeky-button-icon cheeky-button-undo" title="Undo"></button>
-            <button type="button" class="cheeky-button-icon cheeky-button-redo" title="Redo"></button>
+            <button type="button" class="cheeky-button-icon cheeky-button-ol" title="Numbered List" ng-click="formatOl($event)"></button>
+            <button type="button" class="cheeky-button-icon cheeky-button-ul" title="Bulleted List" ng-click="formatUl($event)"></button>
+            <button type="button" class="cheeky-button-icon cheeky-button-link" title="Link" ng-click="insertLink($event)"></button>
+            <button type="button" class="cheeky-button-icon cheeky-button-image" title="Image" ng-click="insertImage($event)"></button>
+            <button type="button" class="cheeky-button-icon cheeky-button-clrformat" title="Clear Formatting" ng-click="unformat($event)"></button>
+            <button type="button" class="cheeky-button-icon cheeky-button-undo" title="Undo" ng-click="undo($event)"></button>
+            <button type="button" class="cheeky-button-icon cheeky-button-redo" title="Redo" ng-click="redo($event)"></button>
         </form>
 
         <form class="cheeky-ribbon-right ng-pristine ng-valid">
